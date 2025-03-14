@@ -68,6 +68,8 @@ export const useStockQuote = (
   // Format tickers to handle both string and array inputs
   const formattedTickers = Array.isArray(tickers) ? tickers.join(',') : tickers;
 
+  const baseURL = "https://financialmodelingprep.com/api/v3/quote/";
+
   const fetchQuotes = async (): Promise<StockQuote[] | null> => {
     if (!formattedTickers) {
       const newError = new Error('No ticker symbols provided');
@@ -80,7 +82,7 @@ export const useStockQuote = (
       setError(null);
 
       const response = await fetch(
-        `https://financialmodelingprep.com/api/v3/quote/${formattedTickers}?apikey=${import.meta.env.VITE_FMP_API_KEY}`
+        `${baseURL}${formattedTickers}?apikey=${import.meta.env.VITE_FMP_API_KEY}`
       );
 
       if (!response.ok) {

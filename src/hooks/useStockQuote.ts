@@ -114,26 +114,3 @@ export const useStockQuote = (
     refetch: fetchQuotes 
   };
 };
-
-// Usage example:
-// 
-// import { useStockQuote } from './useStockQuote';
-// 
-// function StockDisplay(): JSX.Element {
-//   const { data, loading, error, refetch } = useStockQuote('AAPL,MSFT,GOOGL');
-//   
-//   if (loading) return <p>Loading...</p>;
-//   if (error) return <p>Error: {error.message}</p>;
-//   
-//   return (
-//     <div>
-//       {data?.map(stock => (
-//         <div key={stock.symbol}>
-//           <h2>{stock.name} ({stock.symbol})</h2>
-//           <p>Price: ${stock.price}</p>
-//         </div>
-//       ))}
-//       <button onClick={refetch}>Refresh</button>
-//     </div>
-//   );
-// }

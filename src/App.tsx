@@ -1,8 +1,12 @@
 import { useStockQuote } from './hooks/useStockQuote';
 import stocks from "../stocks.json";
 import StockTable from './components/StockTable';
+import { useState } from 'react';
+import HistoricPriceChart from './components/HistoricPrice';
 
 function App() {
+
+  const [ticker, setTicker] = useState<string>("");
 
   const tickers = stocks.map((stock) => stock.ticker).join(",");
   const { data, loading, error, refetch } = useStockQuote(tickers);
@@ -22,9 +26,17 @@ function App() {
     };
   });
 
+  const selectTicker = (ticker: string) => {
+    setTicker(ticker);
+  };
+
   return (
     <>
-      <StockTable stocks={stocksWithBuyPrice} />
+      <HistoricPriceChart ticker={ticker} />
+      <StockTable 
+        stocks={stocksWithBuyPrice} 
+        onTickerSelect={selectTicker}
+      />
     </>
   )
 }

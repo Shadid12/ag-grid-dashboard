@@ -1,6 +1,7 @@
 import { useStockQuote } from './hooks/useStockQuote';
 import stocks from "../stocks.json";
 import StockTable from './components/StockTable';
+import DailyPrice from './components/DailyPrice';
 import { useState } from 'react';
 import HistoricPriceChart from './components/HistoricPrice';
 
@@ -32,7 +33,10 @@ function App() {
 
   return (
     <>
-      <HistoricPriceChart ticker={ticker} />
+      <div style={{ display: "flex", width: "100%" }}>
+        <HistoricPriceChart ticker={ticker} />
+        <DailyPrice ticker={ticker} />
+      </div>
       <StockTable 
         stocks={stocksWithBuyPrice} 
         onTickerSelect={selectTicker}

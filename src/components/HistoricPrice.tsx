@@ -62,9 +62,10 @@ const HistoricPriceChart = ({ ticker }: HistoricPriceChartProps) => {
 	}
 
   return (
-		<div style={{ width: "50%" }}>
-			<AgCharts options={options} />
-		</div>
+    <div style={{ width: "100%" }}>
+      <AgCharts options={options} />
+    </div>
+		
 	);
 };
 
